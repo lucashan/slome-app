@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CollapseTeam from './CollapseTeam';
+import CollapseTeam from './components/CollapseTeam';
 import {Container, Card, CardDeck, CardTitle} from 'reactstrap';
 import Background from './assets/slome.svg';
 import Lucas from './assets/lucas.jpg';
@@ -22,7 +22,7 @@ class About extends Component {
     render() {
         return (
             <Container>
-                <center><img src={Background} alt = "background" width="80%" height="80%"/></center>
+                <img className="mx-auto" src={Background} alt = "background" width="80%" height="80%"/>
                 <CardTitle style={{fontSize: "40px", color: "black", row: "-4px"}} className="text-center mt-5">Meet the Team</CardTitle>
                 <div style={{minHeight: "450px"}}>
                     <CardDeck className = "mt-5">

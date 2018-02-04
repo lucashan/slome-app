@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './css/App.css';
 
 class App extends Component {
@@ -8,6 +8,10 @@ class App extends Component {
         address: "",
         placeId: "",
         location: {}
+    }
+
+    componentWillMount(){
+        localStorage.setItem('saved', JSON.stringify([]));
     }
 
     newAddress = (address, placeId, location) => {

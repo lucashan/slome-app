@@ -3,6 +3,8 @@ import {Container, Row, Col} from 'reactstrap';
 import PlacesAutocomplete, {geocodeByPlaceId, getLatLng} from 'react-places-autocomplete';
 import dropPin from './assets/drop_pin.png';
 import Util from './util';
+import Intro from './components/Intro';
+import PropertyDetails from './components/PropertyDetails';
 import './css/autocomplete.css';
 
 /*global google */
@@ -13,7 +15,16 @@ class MainMap extends Component {
         super(props)
         this.state = {
             address: "",
-            placeId: ""
+            placeId: "",
+            crimeData: {
+                "disorderly": 3,
+                "noise": 12,
+                "substance": 0,
+                "domestic": 0,
+                "misdemeanor": 2,
+                "hazard": 2,
+                "misc": 0
+            }
         }
     }
 
@@ -36,6 +47,7 @@ class MainMap extends Component {
         console.log("changed")
         if (this.props.location !== nextProps.location){
             const location = nextProps.location;
+            this.getBackendData({lat: location.lat, lng: location.lng})
             this.state.mapMarker.setPosition({lat: location.lat, lng: location.lng})
             this.state.map.setCenter({lat: location.lat, lng: location.lng})
             this.state.map.setZoom(15)
@@ -43,26 +55,20 @@ class MainMap extends Component {
         }
     }
 
-    onChange = (address) => {
-        this.setState({address})
+    getTimes = (location) => {
+        Util.fetchWrapper("rental/info/" + location.lat + "/" + location.lng + "/482",
+            {method: 'GET'})
+        .then((responseJSON) => {
+            this.setState({travelTime: responseJSON})
+        })
+        .catch((errorJSON) => {
+            this.setState({error: errorJSON})
+        })
     }
 
-    handleSelect = (address, placeId) => {
-        this.setState({address, placeId})
-        geocodeByPlaceId(placeId)
-        .then(results => getLatLng(results[0]))
-        .then(
-            ({lat, lng}) => {
-                this.state.mapMarker.setPosition({lat: lat, lng: lng})
-                this.state.map.setCenter({lat: lat, lng: lng})
-                this.state.map.setZoom(15)
-                this.state.mapMarker.setVisible(true)
-            }
-        )
-    }
-
-    getBackendData = (placeId) => {
-        Util.fetchWrapper("/fetchCrime", {method: 'GET', body: {placeId: placeId}})
+    getBackendData = (location) => {
+        Util.fetchWrapper("rental/reports/" + location.lat + "/" + location.lng + "/482",
+            {method: 'GET'})
         .then((responseJSON) => {
             this.setState({crimeData: responseJSON})
         })
@@ -88,12 +94,18 @@ class MainMap extends Component {
         return (
             <Container fluid>
                 <Row>
-                    <Col md="5">
-                        <h4 className="mt-4">{this.props.address}</h4>
-                        <hr />
-
+                    <Col lg="5" md="6">
+                        {(this.props.address !== "") ? <PropertyDetails property={
+                            {
+                                address: this.props.address,
+                                campusDistance: 1.1,
+                                carTime: 6,
+                                bikeTime: 10,
+                                walkTime: 25
+                            }
+                        } crimeData={this.state.crimeData} /> : <Intro />}
                     </Col>
-                    <Col md="7" style={{height: "calc(100%)"}}>
+                    <Col lg="7" md="6" style={{height: "calc(100%)"}}>
                         <div style={{minHeight: "calc(100vh - 136px)", width: "100%"}} ref="map"/>
                     </Col>
                 </Row>

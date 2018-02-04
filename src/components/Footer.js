@@ -9,7 +9,7 @@ class Footer extends Component {
         return (
             <div className="pr-footer mt-5">
                 <Container>
-                    <p className="copyright">Created by SLOMe team at SLO Hacks.</p>
+                    <p className="copyright text-center">Created by SLOMe team at SLO Hacks.</p>
                 </Container>
             </div>
         );

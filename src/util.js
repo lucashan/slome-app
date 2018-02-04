@@ -17,9 +17,8 @@ export default class Util {
 
          */
         return fetch(
-            "http://localhost:8080" + url, // Add API address to URL
+            "https://slohacks-slome.appspot.com/" + url, // Add API address to URL
             {
-                headers: {'Content-Type': 'application/json'},
                 mode: 'cors', ...params
             })
         .then(response => { // parse JSON
@@ -27,5 +26,14 @@ export default class Util {
                 return response.ok ? json : Promise.reject(json); // trigger failure on HTTP error
             });
         });
+    }
+    static buildStreetViewUrl(sizeX, sizeY, address) {
+        let url = 'https://maps.googleapis.com/maps/api/streetview?';
+        url += 'size=' + sizeX + 'x' + sizeY;
+        url += '&location=' + address;
+        url += '&pitch=-0.76';
+        url += '&key=AIzaSyC4ayU4Hydvj2zN67A7a_vC0haWAKSdEPE';
+
+        return url;
     }
 }

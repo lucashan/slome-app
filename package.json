@@ -3,15 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.2",
+    "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-places-autocomplete": "^6.0.2",
     "react-router": "^3.2.0",
     "react-scripts": "1.1.0",
-    "reactstrap": "^5.0.0-beta"
+    "reactstrap": "^5.0.0-beta",
+    "serve-favicon": "^2.4.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "postinstall": "react-scripts build",
+    "deploy": "gcloud app deploy",
+    "start": "node app.js",
+    "devStart": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   }
