@@ -27,7 +27,9 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+
+    margin: 0;
+    padding: 0;
 }
 
 .pr-footer {
@@ -90,4 +92,17 @@ body {
 
 a.icons:hover {
   background: #C93;
+}
+
+body .about{
+    background-image: url("../assets/slo.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 40%;
+}
+
+#wrapper{
+    margin-left: -76px;
+    margin-right: -10px;
+    position: relative;
 }
