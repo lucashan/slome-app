@@ -24,25 +24,27 @@ class About extends Component {
             <Container>
                 <center><img src={Background} alt = "background" width="80%" height="80%"/></center>
                 <CardTitle style={{fontSize: "40px", color: "black", row: "-4px"}} className="text-center mt-5">Meet the Team</CardTitle>
-                <CardDeck className = "mt-5">
-                    <Card>
-                        <CollapseTeam imgSrc = {Lucas} linkedPic = {linkedIn} name = "Lucas Han" gitPic = {gitHub}
-                                      position = "Front End Development" linkL = "https://www.linkedin.com/in/hanlucas/"
-                                      linkG = "https://github.com/lucashan"/>
-                    </Card>
-                    <Card>
-                        <CollapseTeam imgSrc = {Reese} linkedPic = {linkedIn} name = "Reese Woodard" gitPic = {gitHub}
-                                      position = "Front End Development" linkL = "https://www.linkedin.com/in/reesewoodard/"/>
-                    </Card>
-                    <Card>
-                        <CollapseTeam imgSrc = {Christian} linkedPic = {linkedIn} name = "Christian Johansen" gitPic = {gitHub}
-                                      position = "Back End Development"/>
-                    </Card>
-                    <Card>
-                        <CollapseTeam imgSrc = {Rose} linkedPic = {linkedIn} name = "Rose Chang" gitPic = {gitHub}
-                                      position = "UI Designer" linkL = "https://www.linkedin.com/in/changrose/"/>
-                    </Card>
-                </CardDeck>
+                <div style={{minHeight: "450px"}}>
+                    <CardDeck className = "mt-5">
+                        <Card>
+                            <CollapseTeam imgSrc = {Lucas} linkedPic = {linkedIn} name = "Lucas Han" gitPic = {gitHub}
+                                          position = "Front End Development" linkL = "https://www.linkedin.com/in/hanlucas/"
+                                          linkG = "https://github.com/lucashan"/>
+                        </Card>
+                        <Card>
+                            <CollapseTeam imgSrc = {Reese} linkedPic = {linkedIn} name = "Reese Woodard" gitPic = {gitHub}
+                                          position = "Front End Development" linkL = "https://www.linkedin.com/in/reesewoodard/"/>
+                        </Card>
+                        <Card>
+                            <CollapseTeam imgSrc = {Christian} linkedPic = {linkedIn} name = "Christian Johansen" gitPic = {gitHub}
+                                          position = "Back End Development"/>
+                        </Card>
+                        <Card>
+                            <CollapseTeam imgSrc = {Rose} linkedPic = {linkedIn} name = "Rose Chang" gitPic = {gitHub}
+                                          position = "UI Designer" linkL = "https://www.linkedin.com/in/changrose/"/>
+                        </Card>
+                    </CardDeck>
+                </div>
                 <CardTitle style={{fontSize: "40px", color: "black", row: "-4px"}} className="text-center mt-4">    </CardTitle>
             </Container>
         );
