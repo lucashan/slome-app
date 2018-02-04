@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CollapseTeam from './CollapseTeam';
+import CollapseTeam from './components/CollapseTeam';
 import {Container, Card, CardDeck, CardTitle} from 'reactstrap';
 import Background from './assets/slome.svg';
 import Lucas from './assets/lucas.jpg';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './assets/logo.svg';
+import logo from '../assets/logo_white.png';
 import {Link} from 'react-router';
 import PlacesAutocomplete, {geocodeByPlaceId, getLatLng} from 'react-places-autocomplete';
 import {Nav, Navbar, NavItem, NavLink, NavbarBrand, NavbarToggler, Collapse} from 'reactstrap';
@@ -29,7 +29,7 @@ class Header extends Component {
         const renderFooter = () => (
             <div className="dropdown-footer">
                 <div>
-                    <img className="m-1" src={require('./assets/powered_by_google_on_white_hdpi.png')} width="112px"
+                    <img className="m-1" src={require('../assets/powered_by_google_on_white_hdpi.png')} width="112px"
                          alt="Powered By Google"/>
                 </div>
             </div>
@@ -41,7 +41,7 @@ class Header extends Component {
         }
         return (
             <Navbar color="primary" expand="md">
-                <NavbarBrand tag={Link} to="/"><img src={logo} height="50px" width="50px" className="App-logo" alt="logo" />{this.props.title}</NavbarBrand>
+                <NavbarBrand tag={Link} to="/"><img src={logo} width="120px" alt="logo" /></NavbarBrand>
                 <PlacesAutocomplete
                     classNames={{
                         autocompleteContainer: "autocomplete-container",
@@ -61,7 +61,7 @@ class Header extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink tag={Link} to="/">Map</NavLink>
+                            <NavLink tag={Link} to="/">Home</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="about">About</NavLink>
