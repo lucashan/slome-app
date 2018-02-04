@@ -16,8 +16,8 @@ class CollapseTeam extends Component {
                 <div className="overlay">
                     <img src={this.props.imgSrc} className="image" alt = "team" onClick={this.toggle} width="100%"/>
                         <Collapse isOpen={this.state.collapse}>
-                                <CardTitle style={{fontSize: "20px", color: "black", row: "-2px"}} className="text-center mt-2">{this.props.name}</CardTitle>
-                                <CardSubtitle style={{fontSize: "14px"}} className="text-center">{this.props.position}</CardSubtitle>
+                                <CardTitle style={{fontSize: "23px", color: "#2980B9", row: "-2px"}} className="text-center mt-2">{this.props.name}</CardTitle>
+                                <CardSubtitle style={{fontSize: "14px", color: "#2C3E50"}} className="text-center">{this.props.position}</CardSubtitle>
                                 <div className="nav3">
                                     <a href={this.props.linkL}>
                                         <img src={this.props.linkedPic} alt = "linkedIn" width="40px" height="40px"/>
