@@ -44,3 +44,50 @@ body {
     color: #696b6e;
     margin-bottom: 0;
 }
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.overlay:hover .image {
+  opacity: 0.2;
+}
+
+.overlay:hover .middle {
+  opacity: 1;
+}
+
+.nav3 {
+  margin: auto;
+  float: left;
+  padding: 30px 20px 30px 75px;
+}
+
+.nav3 a>img{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.icons{
+  display:inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+a.icons:hover {
+  background: #C93;
+}
