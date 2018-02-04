@@ -19,6 +19,9 @@ class Header extends Component {
                                 <NavLink tag={Link} to="map">Map</NavLink>
                             </NavItem>
                             <NavItem>
+                                <NavLink tag={Link} to="about">About</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
