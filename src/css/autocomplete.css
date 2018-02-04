@@ -1,4 +1,8 @@
-.Demo__autocomplete-container {
+.autocomplete-container {
+    font-size: 84%;
+    display: block;
+    position: absolute;
+    z-index: 100;
     border-bottom: honeydew;
     border-left: honeydew;
     border-right: honeydew;
@@ -7,14 +11,19 @@
     border-radius: 0 0 2px 2px;
 }
 
-.Demo__suggestion-item {
+.suggestion-item {
     padding: 4px;
     text-align: left;
 }
 
-.Demo__spinner {
+.spinner {
     color: #18bc9c;
     font-size: 30px;
+}
+
+.autocomplete {
+    width: 80%;
+    max-width: 320px;
 }
 
 @media (max-width: 480px) {
