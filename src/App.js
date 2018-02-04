@@ -6,7 +6,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Header title="This is the title"/>
+                <Header title="SLOMe"/>
                 {this.props.children}
             </div>
         );
