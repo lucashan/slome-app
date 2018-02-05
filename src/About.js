@@ -22,7 +22,7 @@ class About extends Component {
 
     render() {
         return (
-            <body className="about">
+            <div className="about">
                 <Container>
                 <img className="mx-auto d-block" style={{display: "block", position: "relative", top: "80px"}}
                      src={Background} alt = "background" width="50%" height="50%"/>
@@ -58,7 +58,7 @@ class About extends Component {
                 </div>
                 <CardTitle style={{fontSize: "40px", color: "black", row: "-4px"}} className="text-center mt-4">    </CardTitle>
                 </Container>
-            </body>
+            </div>
         );
     }
 }

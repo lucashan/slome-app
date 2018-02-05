@@ -114,7 +114,7 @@ class MainMap extends Component {
                             }
                         } crimeData={this.state.crimeData} /> : <Intro />}
                     </Col>
-                    <Col lg="7" md="6" style={{height: "calc(100%)"}}>
+                    <Col lg="7" md="6" className="p-0">
                         <div style={{minHeight: "calc(100vh - 116px)", width: "100%"}} ref="map"/>
                     </Col>
                 </Row>
