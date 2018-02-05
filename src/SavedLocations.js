@@ -42,7 +42,7 @@ class SavedLocations extends Component {
         let properties;
 
         if (!Array.isArray(this.state.saved) || this.state.saved.length === 0){
-            properties = <p>No saved properties!</p>
+            properties = <p className="m-4">No saved properties (yet)<br/>Go ahead and add some on the homepage!</p>
         }
         else {
             properties =
@@ -57,15 +57,15 @@ class SavedLocations extends Component {
                                     <Row>
                                         <Col>
                                             <img className="mx-auto d-block" src={car} width="35px" />
-                                            <p className="text-center">{prop.carTime} min</p>
+                                            <p className="text-center">{prop.travelTime.drive_time} min</p>
                                         </Col>
                                         <Col>
                                             <img className="mx-auto d-block" src={bike} width="35px" />
-                                            <p className="text-center">{prop.bikeTime} min</p>
+                                            <p className="text-center">{prop.travelTime.bike_time} min</p>
                                         </Col>
                                         <Col>
                                             <img className="mx-auto d-block" src={walk} width="35px" />
-                                            <p className="text-center">{prop.walkTime} min</p>
+                                            <p className="text-center">{prop.travelTime.walking_time} min</p>
                                         </Col>
                                     </Row>
                                 </CardBody>

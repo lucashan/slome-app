@@ -24,6 +24,14 @@ class MainMap extends Component {
                 "misdemeanor": 2,
                 "hazard": 2,
                 "misc": 0
+            },
+            travelTime: {
+                "drive_dist": "2.1 mi",
+                "drive_time": "9 mins",
+                "bike_dist": "1.8 mi",
+                "bike_time": "12 mins",
+                "walking_dist": "2.2 mi",
+                "walking_time": "23 mins"
             }
         }
     }
@@ -48,6 +56,7 @@ class MainMap extends Component {
         if (this.props.location !== nextProps.location){
             const location = nextProps.location;
             this.getBackendData({lat: location.lat, lng: location.lng})
+            this.getTimes({lat: location.lat, lng: location.lng})
             this.state.mapMarker.setPosition({lat: location.lat, lng: location.lng})
             this.state.map.setCenter({lat: location.lat, lng: location.lng})
             this.state.map.setZoom(15)
@@ -56,7 +65,7 @@ class MainMap extends Component {
     }
 
     getTimes = (location) => {
-        Util.fetchWrapper("rental/info/" + location.lat + "/" + location.lng + "/482",
+        Util.fetchWrapper("rental/" + location.lat + "/" + location.lng,
             {method: 'GET'})
         .then((responseJSON) => {
             this.setState({travelTime: responseJSON})
@@ -98,15 +107,15 @@ class MainMap extends Component {
                         {(this.props.address !== "") ? <PropertyDetails property={
                             {
                                 address: this.props.address,
-                                campusDistance: 1.1,
-                                carTime: 6,
-                                bikeTime: 10,
-                                walkTime: 25
+                                campusDistance: this.state.travelTime.drive_dist,
+                                carTime: this.state.travelTime.drive_time,
+                                bikeTime: this.state.travelTime.bike_time,
+                                walkTime: this.state.travelTime.walking_time
                             }
                         } crimeData={this.state.crimeData} /> : <Intro />}
                     </Col>
                     <Col lg="7" md="6" style={{height: "calc(100%)"}}>
-                        <div style={{minHeight: "calc(100vh - 136px)", width: "100%"}} ref="map"/>
+                        <div style={{minHeight: "calc(100vh - 116px)", width: "100%"}} ref="map"/>
                     </Col>
                 </Row>
             </Container>

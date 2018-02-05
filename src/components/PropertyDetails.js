@@ -7,12 +7,16 @@ import walk from '../assets/walk.svg';
 import bus from '../assets/bus.svg';
 
 class PropertyDetails extends Component {
-    saveProperty = (property, crimeData) => {
+    saveProperty = (property, crimeData, travelTime) => {
         let saved = JSON.parse(localStorage.getItem("saved"))
         if (!Array.isArray(saved)){
             saved = []
         }
-        saved.push({property: property, crimeData: crimeData})
+        saved.push({
+            property: property,
+            crimeData: crimeData,
+            travelTime: travelTime
+        })
         localStorage.setItem('saved', JSON.stringify(saved));
     }
     render() {
@@ -22,7 +26,7 @@ class PropertyDetails extends Component {
                 <h4 className="mt-4">{property.address}</h4>
                 <hr />
                 <h5>Police Incident Reports</h5>
-                <p>Searching SLO PD reports within .3 mile radius</p>
+                <p>Searching SLO PD reports within .3 mile radius over past 1 year.</p>
                 <Table size="sm">
                     <thead>
                     <tr>
@@ -63,19 +67,19 @@ class PropertyDetails extends Component {
                 </Table>
 
                 <hr />
-                <h5>Commute to Cal Poly Campus ({property.campusDistance} miles)</h5>
+                <h5>Commute to Cal Poly Campus ({property.campusDistance})</h5>
                 <Row>
                     <Col>
                         <img className="mx-auto d-block" src={car} width="55px" />
-                        <p className="text-center">{property.carTime} min</p>
+                        <p className="text-center">{property.carTime}</p>
                     </Col>
                     <Col>
                         <img className="mx-auto d-block" src={bike} width="55px" />
-                        <p className="text-center">{property.bikeTime} min</p>
+                        <p className="text-center">{property.bikeTime}</p>
                     </Col>
                     <Col>
                         <img className="mx-auto d-block" src={walk} width="55px" />
-                        <p className="text-center">{property.walkTime} min</p>
+                        <p className="text-center">{property.walkTime}</p>
                     </Col>
                 </Row>
                 <hr />
@@ -89,7 +93,16 @@ class PropertyDetails extends Component {
                         <p>4B Kennedy Library (Cal Poly)</p>
                     </Col>
                 </Row>
-                <Button color="primary" onClick={() => this.saveProperty(property, this.props.crimeData)}>Save Property</Button>
+                <div className="p-5">
+                <Button className="mx-auto d-block" color="primary" onClick={() => this.saveProperty(property, this.props.crimeData, {
+                    "drive_dist": property.campusDistance,
+                    "drive_time": property.carTime,
+                    "bike_dist": "0 mi",
+                    "bike_time": property.bikeTime,
+                    "walking_dist": "0 mi",
+                    "walking_time": property.walkTime
+                })}>Save Property</Button>
+                </div>
             </div>
         );
     }
